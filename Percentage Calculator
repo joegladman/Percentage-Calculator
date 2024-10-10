@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Percentage Calculator</h1>
+
+    <label for="number">Enter a number:</label><br>
+    <input type="number" id="number" placeholder="Enter number"><br><br>
+
+    <label for="percentage">Enter percentage:</label><br>
+    <input type="number" id="percentage" placeholder="Enter percentage"><br><br>
+
+    <button onclick="calculatePercentage()">Calculate</button>
+    <button onclick="resetPage()">Refresh</button>
+
+    <div id="result"></div>
+
+    <script>
+        function calculatePercentage() {
+            var number = parseFloat(document.getElementById('number').value);
+            var percentage = parseFloat(document.getElementById('percentage').value);
+            
+            if (!isNaN(number) && !isNaN(percentage)) {
+                var result = (number * percentage) / 100;
+                document.getElementById('result').innerHTML = 
+                    percentage + "% of " + number + " is " + result.toFixed(2);
+            } else {
+                document.getElementById('result').innerHTML = "Please enter valid numbers.";
+            }
+        }
+
+        function resetPage() {
+            document.getElementById('number').value = '';
+            document.getElementById('percentage').value = '';
+            document.getElementById('result').innerHTML = '';
+        }
+    </script>
+
+</body>
+</html>
